@@ -4,7 +4,6 @@ import Recipes, { Recipe } from "../components/Recipes";
 import Navigation from "../components/Navigation";
 import axios from "axios";
 import { FaSearch } from "react-icons/fa"; 
-import "../styles/global.css";
 
 const SearchPage: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
