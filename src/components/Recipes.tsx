@@ -51,7 +51,7 @@ return (
           <div key={recipe._id} className="relative">
             <Link href={`/recipes/${recipe._id}`} key={recipe._id}>
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <Image src={recipe.imgURL} alt={recipe.name} className="w-full h-40 object-cover" />
+                <Image src={recipe.imgURL} alt={recipe.name} width={200} height={200} className="w-full h-40 object-cover" />
                 <div className="p-6 relative">
                   <h3 className="text-2xl font-semibold text-black mb-2">{recipe.name}</h3>
                   {/* Delete button */}
