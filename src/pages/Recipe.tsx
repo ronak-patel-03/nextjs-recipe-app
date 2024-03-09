@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Recipes, { Recipe }from "../components/Recipes"
-import '../styles/global.css';
 
 const RecipePage: React.FC = () => {
     const [recipes, setRecipes] = useState<any[]>([]);
