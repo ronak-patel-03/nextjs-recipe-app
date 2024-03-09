@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import Recipes from "../components/Recipes";
 import Home from "../components/Home";
-import "../styles/global.css";
 import axios from "axios";
 import { useSession, signIn } from "next-auth/react";
 
