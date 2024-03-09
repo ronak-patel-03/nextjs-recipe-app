@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RecipeDetail from '../../components/RecipeDetail';
 import Navigation from '../../components/Navigation';
-import '../../styles/global.css';
 import { useRouter } from 'next/router';
 
 const RecipeDetailPage: React.FC = () => {
