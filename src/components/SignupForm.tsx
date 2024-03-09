@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { signUp } from '../services/userService';
 import Notification from './Notification';
-import '../styles/global.css'; 
 
 const SignupForm: React.FC = () => {
     const [username, setUsername] = useState('');
