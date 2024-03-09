@@ -5,15 +5,15 @@ This project represents a collaborative effort by a team comprising Ronak, Kisha
 
 # Contributions
 
-Initial Database Development:
+**Initial Database Development:**
 The team collectively determined the necessary database fields and finalized the schema through thorough research.
 Ronak and Ishan collaborated to establish the initial database structure.
 
-API Development:
+**API Development:**
 Ronak and Kishan collaborated closely to architect a robust API infrastructure, enabling seamless data exchange across the application.
 Each team member contributed to API development in alignment with their specific feature requirements.
 
-Frontend Development with Backend logic:
+**Frontend Development with Backend logic:**
 
 Ronak:
 
