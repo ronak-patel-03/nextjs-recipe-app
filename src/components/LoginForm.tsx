@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSession, signIn } from 'next-auth/react';
+import { signIn } from '../services/userService';
 import Notification from './Notification';
 import Link from 'next/link';
 
@@ -8,16 +8,18 @@ const LoginForm: React.FC = () => {
     const [password, setPassword] = useState('');
     const [notificationMessage, setNotificationMessage] = useState('');
 
-    const { data: session } = useSession();
-    console.log(session);
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await signIn('credentials', { username, password });
+            if (!username || !password) {
+                setNotificationMessage('Username and password are required');
+                return;
+            }
+
+            await signIn({ username, password });
             setNotificationMessage('Login successful');
             console.log("login-----------",  username);
-            
+            // Redirect the user after successful login
             window.location.href = '/Home';
         } catch (error) {
             console.error('Login Error:', error);
@@ -73,16 +75,6 @@ const LoginForm: React.FC = () => {
                             <Link href="/SignUp" className="text-blue-500 hover:underline">Sign Up here</Link>
                         </p>
                     </div>
-                </div>
-
-                {/* Google Sign In Button */}
-                <div className="flex justify-center">
-                    <button
-                        className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        onClick={() => signIn('google')}
-                    >
-                        Sign In with Google
-                    </button>
                 </div>
                 <Notification message={notificationMessage} onClose={handleNotificationClose} />
             </form>
