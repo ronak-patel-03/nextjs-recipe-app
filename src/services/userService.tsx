@@ -1,14 +1,11 @@
-// services/userService.ts
-
 import axios from 'axios';
 
-export interface UserProfile {
+export interface Credentials {
     username: string;
-    // Add other properties as needed
+    password: string;
 }
 
-
-export const signIn = async (credentials: { username: string, password: string }) => {
+export const signIn = async (credentials: Credentials) => {
     try {
         const response = await axios.post('/api/login', credentials);
         return response.data;
