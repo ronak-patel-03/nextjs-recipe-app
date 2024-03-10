@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { connectDB } from '../../services/db';
+import bcrypt from 'bcrypt'; 
 import User, { UserDocument } from '../../models/users';
 
 connectDB();
@@ -18,7 +19,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return res.status(400).json({ message: 'User already exists' });
         }
 
-        const newUser: UserDocument = new User({ username, password });
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser: UserDocument = new User({ username, password: hashedPassword });
         await newUser.save();
 
         res.status(201).json({ message: 'User registered successfully' });
