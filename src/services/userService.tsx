@@ -5,6 +5,10 @@ export interface Credentials {
     password: string;
 }
 
+export interface UserProfile {
+    username: string;
+}
+
 export const signIn = async (credentials: Credentials) => {
     try {
         const response = await axios.post('/api/login', credentials);
