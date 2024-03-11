@@ -32,7 +32,7 @@ const LoginForm: React.FC = () => {
 
     const handleSignInWithGoogle = async () => {
         try {
-            await signIn('google');
+            await signIn('google',{callbackUrl: '/Home'});
         } catch (error) {
             console.error('Sign in with Google Error:', error);
         }
