@@ -9,7 +9,7 @@ export interface UserProfile {
     username: string;
 }
 
-export const signIn = async (credentials: Credentials) => {
+export const signIN = async (credentials: Credentials) => {
     try {
         const response = await axios.post('/api/login', credentials);
         return response.data;
