@@ -1,14 +1,35 @@
-import React from 'react';
+import { GetServerSidePropsContext } from 'next';
+import { getSession } from 'next-auth/react';
+import type { Session } from 'next-auth';
 
-const UserProfile: React.FC = () => {
-    return (
-        <div className="flex justify-center items-center h-screen">
-            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h1 className="text-2xl font-bold mb-4">User Profile</h1>
-                <p className="text-gray-700">This is the user profile page. You can display user information here.</p>
-            </div>
-        </div>
-    );
-};
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getSession(context);
 
-export default UserProfile;
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login', 
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}
+
+interface ProfileProps {
+  session: Session | null; 
+}
+  
+function Profile({ session }: ProfileProps) {
+  return (
+    <div>
+      <h1>Welcome, {session?.user?.name || 'Guest'}</h1>
+      <p>Your email: {session?.user?.email || 'Unknown'}</p>
+    </div>
+  );
+}
+
+export default Profile;
